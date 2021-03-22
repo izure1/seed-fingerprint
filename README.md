@@ -8,7 +8,15 @@ For example, you may want to use fingerprints instead of tokens, but the user's 
 
 `seed-fingerprint` uses seeds to generate a hash that can identify the user.
 
+## Demo
+
+[https://izure1.github.io/seed-fingerprint/sample.html](https://izure1.github.io/seed-fingerprint/sample.html)
+
 ## Usage
+
+### Docs
+
+[https://izure1.github.io/seed-fingerprint](https://izure1.github.io/seed-fingerprint)
 
 ### Advanced usage
 
