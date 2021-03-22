@@ -1,6 +1,6 @@
 {
   "name": "seed-fingerprint",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "Library that generates fingerprints that can identify the client's browser with the seed value.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -9,9 +9,11 @@
   "license": "MIT",
   "keywords": [
     "fingerprint",
+    "fingerprinting",
+    "identification",
+    "browser",
     "seed",
-    "token",
-    ""
+    "token"
   ],
   "scripts": {
     "build": "run-p build:*",
