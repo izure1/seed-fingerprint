@@ -13,8 +13,23 @@
             <span class="fingerprint-result"></span>
         </section>
         <script>
-            document.querySelector('.fingerprint .fingerprint-seed').onchange = function() {
+            const inputElement = document.querySelector('.fingerprint .fingerprint-seed');
+            const resultElement = document.querySelector('.fingerprint .fingerprint-result');
+
+            async function getFingerprint(seed) {
+                const fingerprint = seedFingerprint.create(seed);
+                const id = await fingerprint.get();
+                return id;
+            }
+
+            async function setFingerprint(seed) {
+                const id = await getFingerprint(seed);
+                resultElement.textContent = id;
+            }
+
+            inputElement.onchange = function() {
                 console.log(`Your seed: ${this.value}`);
+                setFingerprint(this.value);
             };
         </script>
     </body>
