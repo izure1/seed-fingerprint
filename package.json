@@ -1,11 +1,11 @@
 {
   "name": "seed-fingerprint",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Library that generates fingerprints that can identify the client's browser with the seed value.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/YOUR_GITHUB_USER_NAME/seed-fingerprint",
+  "repository": "https://github.com/izure1/seed-fingerprint",
   "license": "MIT",
   "keywords": [
     "fingerprint",
