@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script type="text/javascript" src="../build/bundle/index.js"></script>
+    </head>
+    <body>
+        <section class="fingerprint">
+            <div>
+                <h6>Seed</h6>
+                <input type="text" value="hello" class="fingerprint-seed" />
+            </div>
+            <h4>Your fingerprint result:</h4>
+            <span class="fingerprint-result"></span>
+        </section>
+        <script>
+            document.querySelector('.fingerprint .fingerprint-seed').onchange = function() {
+                console.log(`Your seed: ${this.value}`);
+            };
+        </script>
+    </body>
+</html>

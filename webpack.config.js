@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: path.join(__dirname, 'src', 'index.ts'),
   watch: true,
   target: 'web',
