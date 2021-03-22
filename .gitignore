@@ -1,5 +1,8 @@
 .idea/*
 .nyc_output
+.github
+.circleci
+.vscode
 build
 node_modules
 test
@@ -7,3 +10,4 @@ src/**.js
 coverage
 *.log
 yarn.lock
+./index.html
