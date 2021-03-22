@@ -15,6 +15,10 @@
                 border-radius: 5px;
                 margin: 20px 0;
             }
+
+            dt {
+                margin: 10px 0;
+            }
         </style>
     </head>
     <body>
@@ -25,13 +29,22 @@
             </div>
             <div class="wrapper">
                 <strong>Your fingerprint result:</strong>
-                <div class="fingerprint-result"></div>
-                <div>
-                    <img class="fingerprint-image">
-                </div>
-                <code class="fingerprint-code">
+                <dl>
+                    <dt>Hash</dt>
+                    <dd>
+                        <span class="fingerprint-result"></span>
+                    </dd>
 
-                </code>
+                    <dt>Hologram</dt>
+                    <dd>
+                        <img class="fingerprint-image">
+                    </dd>
+
+                    <dt>Component</dt>
+                    <dd>
+                        <code class="fingerprint-code"></code>
+                    </dd>
+                </dl>
             </div>
         </section>
         <script>
