@@ -3,6 +3,7 @@
 .github
 .circleci
 .vscode
+build
 node_modules
 test
 src/**.js
