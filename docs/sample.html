@@ -2,31 +2,67 @@
 <html>
     <head>
         <script type="text/javascript" src="./assets/js/seed-fingerprint.js"></script>
+        <style>
+            .wrapper {
+                margin: 20px 0;
+            }
+            .fingerprint-code {
+                max-width: 900px;
+                background-color: #eee;
+                padding: 10px;
+                white-space: pre-wrap;
+                display: block;
+                border-radius: 5px;
+                margin: 20px 0;
+            }
+        </style>
     </head>
     <body>
         <section class="fingerprint">
-            <div>
-                <h6>Seed</h6>
+            <div class="wrapper">
+                <div>Seed</div>
                 <input type="text" value="hello" class="fingerprint-seed" />
             </div>
-            <h4>Your fingerprint result:</h4>
-            <span class="fingerprint-result"></span>
+            <div class="wrapper">
+                <strong>Your fingerprint result:</strong>
+                <div class="fingerprint-result"></div>
+                <div>
+                    <img class="fingerprint-image">
+                </div>
+                <code class="fingerprint-code">
+
+                </code>
+            </div>
         </section>
         <script>
-            const inputElement = document.querySelector('.fingerprint .fingerprint-seed');
+            const inputElement  = document.querySelector('.fingerprint .fingerprint-seed');
             const resultElement = document.querySelector('.fingerprint .fingerprint-result');
+            const codeElement   = document.querySelector('.fingerprint .fingerprint-code');
+            const imgElement    = document.querySelector('.fingerprint .fingerprint-image');
 
             async function getFingerprint(seed) {
                 const fingerprint = seedFingerprint.create(seed);
                 const id = await fingerprint.get();
-                return id;
+                return { fingerprint, id };
             }
 
             async function setFingerprint(seed) {
-                const id = await getFingerprint(seed);
-                resultElement.textContent = id;
-            }
+                const start = Date.now();
+                const { fingerprint, id } = await getFingerprint(seed);
+                const end = Date.now();
+                const interval = end - start;
 
+                const result = {};
+                const component = fingerprint.component;
+                for (const i in component) {
+                    result[i] = await component[i];
+                }
+                resultElement.textContent = `${id} - in ${interval}ms`;
+                codeElement.textContent = JSON.stringify(result, null, 2);
+                imgElement.src = result.canvas.canvas2dRender;
+            }
+            
+            setFingerprint(inputElement.value);
             inputElement.onchange = function() {
                 console.log(`Your seed: ${this.value}`);
                 setFingerprint(this.value);
