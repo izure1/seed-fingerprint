@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for seed-fingerprint">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,11 +50,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>seed-fingerprint</h1>
 		</div>
 	</div>
@@ -85,168 +79,123 @@
 				<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
 					<h3>Advanced usage</h3>
 				</a>
-				<pre><code>import { create } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;seed-fingerprint&#x27;</span>;
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">create</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;seed-fingerprint&#039;</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">const</span> seed = <span class="hljs-string">&#x27;hello&#x27;</span>;
-<span class="hljs-keyword">const</span> fingerprint = create(seed);
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">seed</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;hello&#039;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fingerprint</span><span style="color: #000000"> = </span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #001080">seed</span><span style="color: #000000">);</span>
 
-<span class="hljs-keyword">const</span> id = <span class="hljs-keyword">await</span> fingerprint.<span class="hljs-keyword">get</span>();
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">id</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">fingerprint</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">();</span>
 </code></pre>
 				<a href="#bundle-file-usage" id="bundle-file-usage" style="color: inherit; text-decoration: none;">
 					<h3>Bundle file usage</h3>
 				</a>
-				<pre><code><span class="hljs-comment">// load</span>
-&lt;script src=<span class="hljs-string">&quot;your-seed-fingerprint-library-path/bundle/index.js&quot;</span>&gt;&lt;/script&gt;
+				<pre><code><span style="color: #008000">// load</span>
+<span style="color: #000000">&lt;</span><span style="color: #001080">script</span><span style="color: #000000"> </span><span style="color: #001080">src</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;your-seed-fingerprint-library-path/bundle/index.js&quot;</span><span style="color: #000000">&gt;&lt;/</span><span style="color: #267F99">script</span><span style="color: #000000">&gt;</span>
 
-<span class="hljs-comment">// script</span>
-<span class="hljs-keyword">const</span> seed = <span class="hljs-string">&#x27;hello&#x27;</span>;
-<span class="hljs-keyword">const</span> fingerprint = <span class="hljs-built_in">window</span>.seedFingerprint.create(seed);
+<span style="color: #008000">// script</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">seed</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;hello&#039;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fingerprint</span><span style="color: #000000"> = </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">seedFingerprint</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #001080">seed</span><span style="color: #000000">);</span>
 
-<span class="hljs-keyword">const</span> id = <span class="hljs-keyword">await</span> fingerprint.<span class="hljs-keyword">get</span>();
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">id</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">fingerprint</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">();</span>
 </code></pre>
 				<p><code>fingerprint</code> has the following components: Each component returns a promise.</p>
-				<pre><code>SeeedFingerprint {
-    componen<span class="hljs-variable">t:</span> {
-        canva<span class="hljs-variable">s:</span> {
-            canvas2dRender: <span class="hljs-built_in">string</span>
-        },
-        date: {
-            timezoneOffse<span class="hljs-variable">t:</span> <span class="hljs-keyword">number</span>
-        },
-        fon<span class="hljs-variable">t:</span> {
-            availableFont<span class="hljs-variable">s:</span> <span class="hljs-built_in">string</span>[]
-        },
-        header: {
-            header: {
-                Accep<span class="hljs-variable">t:</span> <span class="hljs-built_in">string</span>
-                Accept-Encodin<span class="hljs-variable">g:</span> <span class="hljs-built_in">string</span>
-                Accept-Language: <span class="hljs-built_in">string</span>
-                User-Agen<span class="hljs-variable">t:</span> <span class="hljs-built_in">string</span>
-            },
-            agen<span class="hljs-variable">t:</span> {
-                ip: <span class="hljs-built_in">string</span>
-                ua<span class="hljs-variable">g:</span> <span class="hljs-built_in">string</span>
-                <span class="hljs-keyword">loc</span>: <span class="hljs-built_in">string</span>
-            }
-        },
-        navigator: {
-            cookieEnabled: boolean
-            hardwareConcurrency: <span class="hljs-keyword">number</span>
-            maxTouchPoint<span class="hljs-variable">s:</span> <span class="hljs-keyword">number</span>
-            <span class="hljs-keyword">language</span>: <span class="hljs-built_in">string</span>
-            <span class="hljs-keyword">language</span><span class="hljs-variable">s:</span> <span class="hljs-built_in">string</span>[]
-            plugin<span class="hljs-variable">s:</span> {
-                [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>
-            }
-            supportedConstrain<span class="hljs-variable">t:</span> {
-                [key: <span class="hljs-built_in">string</span>]: boolean
-            }
-        },
-        screen: {
-            colorDepth: <span class="hljs-keyword">number</span>
-            width: <span class="hljs-keyword">number</span>
-            heigh<span class="hljs-variable">t:</span> <span class="hljs-keyword">number</span>
-        },
-        webg<span class="hljs-variable">l:</span> {
-            webglRenderer: <span class="hljs-built_in">string</span>
-            webglRender: <span class="hljs-built_in">string</span>
-        },
-    }
-}
+				<pre><code><span style="color: #001080">SeeedFingerprint</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    component: {</span>
+<span style="color: #000000">        canvas: {</span>
+<span style="color: #000000">            canvas2dRender: </span><span style="color: #001080">string</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        date: {</span>
+<span style="color: #000000">            timezoneOffset: </span><span style="color: #001080">number</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        font: {</span>
+<span style="color: #000000">            availableFonts: </span><span style="color: #001080">string</span><span style="color: #000000">[]</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        header: {</span>
+<span style="color: #000000">            header: {</span>
+<span style="color: #000000">                Accept: </span><span style="color: #001080">string</span>
+<span style="color: #000000">                </span><span style="color: #001080">Accept</span><span style="color: #000000">-Encoding: </span><span style="color: #001080">string</span>
+<span style="color: #000000">                </span><span style="color: #001080">Accept</span><span style="color: #000000">-Language: </span><span style="color: #001080">string</span>
+<span style="color: #000000">                </span><span style="color: #001080">User</span><span style="color: #000000">-Agent: </span><span style="color: #001080">string</span>
+<span style="color: #000000">            },</span>
+<span style="color: #000000">            agent: {</span>
+<span style="color: #000000">                ip: </span><span style="color: #001080">string</span>
+<span style="color: #000000">                uag: </span><span style="color: #001080">string</span>
+<span style="color: #000000">                loc: </span><span style="color: #001080">string</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        navigator: {</span>
+<span style="color: #000000">            cookieEnabled: </span><span style="color: #001080">boolean</span>
+<span style="color: #000000">            hardwareConcurrency: </span><span style="color: #001080">number</span>
+<span style="color: #000000">            maxTouchPoints: </span><span style="color: #001080">number</span>
+<span style="color: #000000">            language: </span><span style="color: #001080">string</span>
+<span style="color: #000000">            languages: </span><span style="color: #001080">string</span><span style="color: #000000">[]</span>
+<span style="color: #000000">            plugins: {</span>
+<span style="color: #000000">                [</span><span style="color: #001080">key</span><span style="color: #000000">: </span><span style="color: #001080">string</span><span style="color: #000000">]: </span><span style="color: #001080">string</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">            supportedConstraint: {</span>
+<span style="color: #000000">                [</span><span style="color: #001080">key</span><span style="color: #000000">: </span><span style="color: #001080">string</span><span style="color: #000000">]: </span><span style="color: #001080">boolean</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        screen: {</span>
+<span style="color: #000000">            colorDepth: </span><span style="color: #001080">number</span>
+<span style="color: #000000">            width: </span><span style="color: #001080">number</span>
+<span style="color: #000000">            height: </span><span style="color: #001080">number</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        webgl: {</span>
+<span style="color: #000000">            webglRenderer: </span><span style="color: #001080">string</span>
+<span style="color: #000000">            webglRender: </span><span style="color: #001080">string</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">}</span>
 </code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/seedfingerprint.html">Seed<wbr>Fingerprint</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_canvas.html">components/canvas</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_date.html">components/date</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_font.html">components/font</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_header.html">components/header</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_navigator.html">components/navigator</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_screen.html">components/screen</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/components_webgl.html">components/webgl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types_primitive.html">types/<wbr>Primitive</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types_example.html">types/example</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types_font_face.html">types/font-<wbr>face</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/seedfingerprint.html" class="tsd-kind-icon">Seed<wbr>Fingerprint</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/header.html" class="tsd-kind-icon">Header</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/headercgiuriresult.html" class="tsd-kind-icon">Header<wbr>Cgi<wbr>Uri<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/tracedagent.html" class="tsd-kind-icon">Traced<wbr>Agent</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#agenturi" class="tsd-kind-icon">agent<wbr>Uri</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#headeruri" class="tsd-kind-icon">header<wbr>Uri</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#macfonts" class="tsd-kind-icon">mac<wbr>Fonts</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#windowfonts" class="tsd-kind-icon">window<wbr>Fonts</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#agent" class="tsd-kind-icon">agent</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#asyncabc" class="tsd-kind-icon">asyncABC</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#availablefonts" class="tsd-kind-icon">available<wbr>Fonts</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#component" class="tsd-kind-icon">component</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#create" class="tsd-kind-icon">create</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#double" class="tsd-kind-icon">double</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#fonts" class="tsd-kind-icon">fonts</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getcanvas2drender" class="tsd-kind-icon">get<wbr>Canvas2d<wbr>Render</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getplugins" class="tsd-kind-icon">get<wbr>Plugins</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#getsafetyvalue" class="tsd-kind-icon">get<wbr>Safety<wbr>Value</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getsupportedconstraints" class="tsd-kind-icon">get<wbr>Supported<wbr>Constraints</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#gettimezoneoffset" class="tsd-kind-icon">get<wbr>Timezone<wbr>Offset</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getwebglrender" class="tsd-kind-icon">get<wbr>Webgl<wbr>Render</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getwebglrenderer" class="tsd-kind-icon">get<wbr>Webgl<wbr>Renderer</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#header" class="tsd-kind-icon">header</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#parsetoml" class="tsd-kind-icon">parseTOML</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#power" class="tsd-kind-icon">power</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#sha256" class="tsd-kind-icon">sha256</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#sha256native" class="tsd-kind-icon">sha256<wbr>Native</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -257,12 +206,15 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 			</ul>
 		</div>
 	</div>

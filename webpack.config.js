@@ -52,8 +52,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.json', '.js', '.jsx'],
     fallback: {
-        crypto: require.resolve('crypto-browserify'),
-        stream: require.resolve('stream-browserify')
+        // crypto: require.resolve('crypto-browserify'),
+        // stream: require.resolve('stream-browserify')
     }
   },
   devtool: 'source-map',

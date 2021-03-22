@@ -55,24 +55,18 @@
 
             async function getFingerprint(seed) {
                 const fingerprint = seedFingerprint.create(seed);
-                const id = await fingerprint.get();
-                return { fingerprint, id };
+                return await fingerprint.result();
             }
 
             async function setFingerprint(seed) {
                 const start = Date.now();
-                const { fingerprint, id } = await getFingerprint(seed);
+                const { id, component } = await getFingerprint(seed);
                 const end = Date.now();
                 const interval = end - start;
 
-                const result = {};
-                const component = fingerprint.component;
-                for (const i in component) {
-                    result[i] = await component[i];
-                }
                 resultElement.textContent = `${id} - in ${interval}ms`;
-                codeElement.textContent = JSON.stringify(result, null, 2);
-                imgElement.src = result.canvas.canvas2dRender;
+                codeElement.textContent = JSON.stringify(component, null, 2);
+                imgElement.src = component.canvas.canvas2dRender;
             }
             
             setFingerprint(inputElement.value);

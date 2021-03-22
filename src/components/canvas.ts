@@ -1,4 +1,4 @@
-import { HmacSHA256 } from 'crypto-js';
+import { hmac, sha256 } from 'hash.js';
 
 import { availableFonts } from './font';
 
@@ -9,7 +9,7 @@ export function getCanvas2dRender(seed: string): string|null {
 
     const text  = 'seed-fingerprint';
     const ctx   = canvas.getContext('2d');
-    const hash: string = HmacSHA256(text, seed).toString();
+    const hash: string = hmac(sha256 as any, seed).update(text).digest('hex');
 
     if (ctx === null) {
         return null;
