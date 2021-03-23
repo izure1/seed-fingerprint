@@ -7,7 +7,6 @@ export interface Header extends Json {
 
 export interface TracedAgent extends Json {
     'ip': string;
-    'uag': string;
     'loc': string;
 }
 
@@ -57,7 +56,7 @@ export async function agent(): Promise<TracedAgent|null> {
         const response      = await fetch(agentUri);
         const text: string  = await response.text();
 
-        const acceptAgent: string[] = [ 'ip', 'uag', 'loc' ];
+        const acceptAgent: string[] = [ 'ip', 'loc' ];
         const tracedAgent: TracedAgent = parseTOML<TracedAgent>(text);
         
         return getSafetyValue(tracedAgent, acceptAgent);

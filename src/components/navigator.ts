@@ -11,10 +11,6 @@ export function getPlugins(): string[] {
     return plugins;
 }
 
-export function getSupportedConstraints() {
-    return navigator.mediaDevices.getSupportedConstraints();
-}
-
 export async function component() {
     const {
         cookieEnabled,
@@ -30,7 +26,6 @@ export async function component() {
         maxTouchPoints,
         language,
         languages,
-        plugins: getPlugins(),
-        supportedConstraint: getSupportedConstraints()
+        plugins: getPlugins()
     };
 }

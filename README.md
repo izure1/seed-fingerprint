@@ -65,7 +65,6 @@ SeeedFingerprint {
             },
             agent: {
                 ip: string
-                uag: string
                 loc: string
             }
         },
@@ -77,9 +76,6 @@ SeeedFingerprint {
             languages: string[]
             plugins: {
                 [key: string]: string
-            }
-            supportedConstraint: {
-                [key: string]: boolean
             }
         },
         screen: {
