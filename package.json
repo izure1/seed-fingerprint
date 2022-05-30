@@ -1,6 +1,6 @@
 {
     "name": "seed-fingerprint",
-    "version": "1.2.0-alpha.0",
+    "version": "1.2.0",
     "description": "Library that generates fingerprints that can identify the client's browser with the seed value.",
     "main": "build/umd/index.js",
     "module": "build/esm/index.js",
