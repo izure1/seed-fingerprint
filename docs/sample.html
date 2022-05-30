@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <script type="text/javascript" src="./assets/js/seed-fingerprint.js"></script>
+        <script type="text/javascript" src="./assets/js/index.js"></script>
         <style>
             .wrapper {
                 margin: 20px 0;
@@ -54,13 +54,14 @@
             const imgElement    = document.querySelector('.fingerprint .fingerprint-image');
 
             async function getFingerprint(seed) {
-                const fingerprint = seedFingerprint.create(seed);
+                const fingerprint = SeedFingerprint.create(seed);
                 return await fingerprint.result();
             }
 
             async function setFingerprint(seed) {
                 const start = Date.now();
                 const { id, component } = await getFingerprint(seed);
+                console.log(id, component)
                 const end = Date.now();
                 const interval = end - start;
 

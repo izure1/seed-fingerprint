@@ -7,7 +7,6 @@
             (async () => {
                 const f = seedFingerprint.create(location.host);
                 const hash = await f.get();
-                console.log(f, hash, f.component.canvas);
                 fingerprint.textContent = hash;
                 const canvas = await f.component.canvas;
                 logo.src = canvas.canvas2dRender;

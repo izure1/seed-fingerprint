@@ -1,5 +1,7 @@
 # seed-fingerprint
 
+[![](https://data.jsdelivr.com/v1/package/npm/seed-fingerprint/badge)](https://www.jsdelivr.com/package/npm/seed-fingerprint)
+
 `seed-fingerprint` is a library that creates a hash that can identify users based on seeds.
 
 The library has gained a lot of inspiration from the [https://github.com/fingerprintjs/fingerprintjs](https://github.com/fingerprintjs/fingerprintjs), and [https://github.com/pjanczyk/simple-fingerprint](https://github.com/pjanczyk/simple-fingerprint) libraries. Thank you.
@@ -18,9 +20,9 @@ For example, you may want to use fingerprints instead of tokens, but the user's 
 
 [https://izure1.github.io/seed-fingerprint](https://izure1.github.io/seed-fingerprint)
 
-### Advanced usage
+### Node.js
 
-```
+```javascript
 import { create } from 'seed-fingerprint';
 
 const seed = 'hello';
@@ -29,23 +31,38 @@ const fingerprint = create(seed);
 const id = await fingerprint.get();
 ```
 
-### Bundle file usage
+### Browser (umd)
 
+```html
+// html load
+<script src="https://cdn.jsdelivr.net/npm/seed-fingerprint@1.x.x/build/umd/index.min.js"></script>
 ```
-// load
-<script src="your-seed-fingerprint-library-path/bundle/index.js"></script>
 
+```javascript
 // script
 const seed = 'hello';
-const fingerprint = window.seedFingerprint.create(seed);
+const fingerprint = window.SeedFingerprint.create(seed);
 
 const id = await fingerprint.get();
 ```
 
+### Browser (esm)
+
+```javascript
+<script type="module">
+import { create } from 'https://cdn.jsdelivr.net/npm/seed-fingerprint@1.x.x/build/esm/index.min.js'
+
+const seed = 'hello';
+const fingerprint = create(seed);
+
+const id = await fingerprint.get();
+</script>
+```
+
 `fingerprint` has the following components: Each component returns a promise.
 
-```
-SeeedFingerprint {
+```javascript
+SeedFingerprint {
     component: {
         canvas: {
             canvas2dRender: string

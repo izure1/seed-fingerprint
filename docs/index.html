@@ -79,7 +79,7 @@
 				<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
 					<h3>Advanced usage</h3>
 				</a>
-				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">create</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;seed-fingerprint&#039;</span><span style="color: #000000">;</span>
+				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">create</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;seed-fingerprint&#039;</span><span style="color: #000000">;</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">seed</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;hello&#039;</span><span style="color: #000000">;</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fingerprint</span><span style="color: #000000"> = </span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #001080">seed</span><span style="color: #000000">);</span>
@@ -89,17 +89,17 @@
 				<a href="#bundle-file-usage" id="bundle-file-usage" style="color: inherit; text-decoration: none;">
 					<h3>Bundle file usage</h3>
 				</a>
-				<pre><code><span style="color: #008000">// load</span>
-<span style="color: #000000">&lt;</span><span style="color: #001080">script</span><span style="color: #000000"> </span><span style="color: #001080">src</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;your-seed-fingerprint-library-path/bundle/index.js&quot;</span><span style="color: #000000">&gt;&lt;/</span><span style="color: #267F99">script</span><span style="color: #000000">&gt;</span>
-
-<span style="color: #008000">// script</span>
+				<pre><code class="language-html"><span style="color: #000000">// html load</span>
+<span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;your-seed-fingerprint-library-path/bundle/index.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+</code></pre>
+				<pre><code class="language-javascript"><span style="color: #008000">// script</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">seed</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;hello&#039;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fingerprint</span><span style="color: #000000"> = </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">seedFingerprint</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #001080">seed</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fingerprint</span><span style="color: #000000"> = </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">SeedFingerprint</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #001080">seed</span><span style="color: #000000">);</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">id</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">fingerprint</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">();</span>
 </code></pre>
 				<p><code>fingerprint</code> has the following components: Each component returns a promise.</p>
-				<pre><code><span style="color: #001080">SeeedFingerprint</span><span style="color: #000000"> {</span>
+				<pre><code class="language-javascript"><span style="color: #001080">SeedFingerprint</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    component: {</span>
 <span style="color: #000000">        canvas: {</span>
 <span style="color: #000000">            canvas2dRender: </span><span style="color: #001080">string</span>
@@ -153,7 +153,10 @@
 						<a href="modules.html">Exports</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/seedfingerprint.html">Seed<wbr>Fingerprint</a>
+						<a href="modules/common.html">common</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/common_seedfingerprint.html">common/<wbr>Seed<wbr>Fingerprint</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/components_canvas.html">components/canvas</a>
@@ -177,7 +180,7 @@
 						<a href="modules/components_webgl.html">components/webgl</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
+						<a href="modules/esm.html">esm</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/types_primitive.html">types/<wbr>Primitive</a>
@@ -187,6 +190,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/types_font_face.html">types/font-<wbr>face</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/umd.html">umd</a>
 					</li>
 				</ul>
 			</nav>

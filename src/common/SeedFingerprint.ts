@@ -1,12 +1,12 @@
 import { hmac, sha256 } from 'hash.js';
 
-import * as canvas from './components/canvas';
-import * as date from './components/date';
-import * as font from './components/font';
-import * as header from './components/header';
-import * as navigator from './components/navigator';
-import * as screen from './components/screen';
-import * as webgl from './components/webgl';
+import * as canvas from '../components/canvas';
+import * as date from '../components/date';
+import * as font from '../components/font';
+import * as header from '../components/header';
+import * as navigator from '../components/navigator';
+import * as screen from '../components/screen';
+import * as webgl from '../components/webgl';
 
 type ResolvedArg<T> = T extends PromiseLike<infer U> ? U : T;
 
@@ -78,9 +78,9 @@ export class SeedFingerprint {
         const copy: SeedFingerprintComponentIterator = this.component;
         const keys: string[] = Object.keys(copy);
         let i = 0;
-        for await (const result of copy) {
+        for (const result of copy) {
             const property: string = keys[i++];
-            component[property] = result;
+            component[property] = await result;
         }
         const text: string = JSON.stringify(component);
         const id: string = hmac(sha256 as any, this.seed).update(text).digest('hex');
