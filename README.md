@@ -42,7 +42,7 @@ const id = await fingerprint.get();
 
 `fingerprint` has the following components: Each component returns a promise.
 
-You can specify components to exclude using the `option.excludes` argument when calling the `create` function. For example, the **header** component requires an internet connection. Therefore, you can exclude this component by writing `create(seed, ['header'])`.
+You can specify components to exclude using the `option.excludes` argument when calling the `create` function. For example, the **header** component requires an internet connection. Therefore, you can exclude this component by writing `create(seed, { excludes: ['header'] })`.
 
 ```javascript
 SeedFingerprint {
