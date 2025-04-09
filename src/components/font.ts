@@ -1,3 +1,7 @@
+interface FontComponentResult {
+  availableFonts: string[]
+}
+
 const windowFonts: string[] = [
     'Arial',
     'Arial Black',
@@ -124,23 +128,26 @@ const macFonts: string[] = [
     'Zapfino'
 ];
 
-export function fonts(): string[] {
-    const list = new Set([ ...windowFonts, ...macFonts ]);
-    return Array.from(list);
+function fonts(): string[] {
+  const list = new Set([
+    ...windowFonts,
+    ...macFonts
+  ])
+  return Array.from(list)
 }
 
 export function availableFonts(): string[] {
-    const avails: Set<string> = new Set;
-    for (const font of fonts()) {
-        if (document.fonts.check(`12px '${font}'`)) {
-            avails.add(font);
-        }
+  const avails: Set<string> = new Set()
+  for (const font of fonts()) {
+    if (document.fonts.check(`12px '${font}'`)) {
+      avails.add(font)
     }
-    return [ ...avails ];
+  }
+  return [...avails]
 }
 
-export async function component() {
-    return {
-        availableFonts: availableFonts()
-    };
+export async function component(seed: string): Promise<FontComponentResult> {
+  return {
+    availableFonts: availableFonts()
+  }
 }

@@ -1,12 +1,22 @@
-function getTimezoneOffset(): number {
-    const year: number = new Date().getFullYear();
-    const a: number = new Date(year, 0, 1).getTimezoneOffset();
-    const b: number = new Date(year, 6, 1).getTimezoneOffset();
-    return Math.max(a, b);
+interface DateComponentResult {
+  timezoneOffset: number
+  timezone: string
 }
 
-export async function component() {
-    return {
-        timezoneOffset: getTimezoneOffset()
-    };
+function getTimezoneOffset(): number {
+  const year  = new Date().getFullYear()
+  const a     = new Date(year, 0, 1).getTimezoneOffset()
+  const b     = new Date(year, 6, 1).getTimezoneOffset()
+  return Math.max(a, b)
+}
+
+function getTimeZone(): string {
+  return Intl.DateTimeFormat().resolvedOptions().timeZone
+}
+
+export async function component(seed: string): Promise<DateComponentResult> {
+  return {
+    timezoneOffset: getTimezoneOffset(),
+    timezone: getTimeZone(),
+  }
 }

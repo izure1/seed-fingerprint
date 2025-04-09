@@ -1,31 +1,24 @@
-export function getPlugins(): string[] {
-    const plugins: string[] = [];
-    for (let i = 0, len = navigator.plugins.length; i < len; i++) {
-        const plugin = navigator.plugins.item(i);
-        if (plugin === null) {
-            continue;
-        }
-        const { name } = plugin;
-        plugins.push(name);
-    }
-    return plugins;
+interface NavigatorComponentResult {
+  cookieEnabled: boolean
+  hardwareConcurrency: number
+  maxTouchPoints: number
+  language: string
 }
 
-export async function component() {
-    const {
-        cookieEnabled,
-        hardwareConcurrency,
-        maxTouchPoints,
-        language,
-        languages,
-    } = navigator;
+export async function component(seed: string): Promise<NavigatorComponentResult> {
+  let {
+    cookieEnabled,
+    hardwareConcurrency,
+    maxTouchPoints,
+    language,
+  } = navigator
 
-    return {
-        cookieEnabled,
-        hardwareConcurrency,
-        maxTouchPoints,
-        language,
-        languages,
-        plugins: getPlugins()
-    };
+  language = language.split('-')[0].toLowerCase()
+
+  return {
+    cookieEnabled,
+    hardwareConcurrency,
+    maxTouchPoints,
+    language,
+  }
 }
